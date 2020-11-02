@@ -42,8 +42,15 @@
       <change afterPath="$PROJECT_DIR$/../Digitalent-Kominfo_Pendalaman-Rest-API/service-product/service-product" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Digitalent-Kominfo_Pendalaman-Rest-API/utils/idGenerator.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Digitalent-Kominfo_Pendalaman-Rest-API/utils/wrapper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase-admin-sdk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controller/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/antrian.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Digital-Introduction-Golang/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Digital-Introduction-Golang/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/antrian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Digitalent-23.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
@@ -72,10 +79,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -85,9 +94,35 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="Digitalent-23" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/MufTho/antrian" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="Digitalent-23" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/MufTho/antrian" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,7 +140,14 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="440" y="240" key="#Go_Modules" timestamp="1604343505497">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="440" y="240" key="#Go_Modules/0.0.1280.800@0.0.1280.800" timestamp="1604343505497" />
     <state x="479" y="173" key="refactoring.ChangeSignatureDialog" timestamp="1604335568019">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
