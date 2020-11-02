@@ -1,13 +1,38 @@
 package main
 
 import (
+	"context"
+	firebase "firebase.google.com/go"
+	"firebase.google.com/go/db"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"google.golang.org/api/option"
+	"log"
 	"net/http"
+	"strings"
 )
+var client *db.Client
+var ctx context.Context
 
-var data []Antrian
+func init()  {
+	ctx = context.Background()
+	conf := &firebase.Config{
+		DatabaseURL: "https://digitelent-be-23.firebaseio.com/",
+	}
 
+	opt := option.WithCredentialsFile("firebase-admin-sdk.json")
+	app, err := firebase.NewApp(ctx, conf,opt)
+	if err != nil{
+		log.Fatalf("Error initializing app", err)
+	}
+	client, err = app.Database(ctx)
+	if err != nil{
+		log.Fatalf("Error Initializing Database", err)
+	}
+
+}
+
+//var data []Antrian
 //Antrian @dec queue
 type Antrian struct {
 	ID string `json:"id"`
@@ -24,40 +49,64 @@ func main()  {
 	router.Run(":8080")
 }
 
-func getAntrian() (bool, []Antrian, error) {
+func getAntrian() (bool, []map[string]interface{}, error) {
+	var data []map[string]interface{}
+	ref := client.NewRef("Antrian")
+	if err := ref.Get(ctx, &data); err != nil{
+		log.Fatalln("Error Reading Form Database", err)
+		return false, nil, err
+	}
 	return true, data, nil
 }
 
 func addAntrian() (bool, error) {
 	_,dataAntrian,_ := getAntrian()
 	var ID string
+	var antrianRef *db.Ref
+	ref := client.NewRef("Antrian")
+
 	if dataAntrian == nil{
-		ID = fmt.Sprintf("B-O")
+		ID = fmt.Sprintf("B-0")
+		antrianRef = ref.Child("0")
 	}else {
 		ID = fmt.Sprintf("B-%d", len(dataAntrian))
+		antrianRef = ref.Child(fmt.Sprintf("%d", len(dataAntrian)))
 	}
-	data =append(data, Antrian{
-		ID:		ID,
+	antrian := Antrian{
+		ID: ID,
 		Status: false,
-	})
+	}
+
+	if err := antrianRef.Set(ctx, antrian); err != nil{
+		log.Fatal(err)
+		return false, err
+	}
 	return true, nil
 }
 
 func updateAntrian(idAntrian string) (bool, error)  {
-	for i := range data {
-		if data[i].ID == idAntrian {
-			data[i].Status = true
-			break
-		}
+	ref := client.NewRef("antrian")
+	id := strings.Split(idAntrian, "-")
+	childRef := ref.Child(id[1])
+	antrian := Antrian{
+		ID: idAntrian,
+		Status: true,
 	}
+	if err := childRef.Set(ctx, antrian); err != nil{
+		log.Fatal(err)
+		return false, err
+	}
+
 	return true, nil
 }
 
 func deleteAntrian(idAntrian string) (bool, error)  {
-	for i := range data {
-		if data[i].ID == idAntrian{
-			data = append(data[:i], data[i+1:]...)
-		}
+	ref := client.NewRef("antrian")
+	id := strings.Split(idAntrian, "-")
+	childRef := ref.Child(id[1])
+	if err := childRef.Delete(ctx); err != nil{
+		log.Fatal(err)
+		return false, err
 	}
 	return true, nil
 }
